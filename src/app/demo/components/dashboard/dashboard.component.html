@@ -1,0 +1,101 @@
+<div class="grid">
+    <div class="col-12 lg:col-6 xl:col-3">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-0">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Ilość reklamacji w {{year}}</span>
+                    <div class="text-900 font-medium text-xl">{{amountOfReports}}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                     [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 lg:col-6 xl:col-3">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-0">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Najczęstszy dostawca</span>
+                    <div class="text-900 font-medium text-xl">{{commonProvider}}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                     [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-map-marker text-orange-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 lg:col-6 xl:col-3">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-0">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Najczęstszy kontrahent</span>
+                    <div class="text-900 font-medium text-xl">{{commonContractor}}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                     [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 lg:col-6 xl:col-3">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-0">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Ilość zgłoszeń w tym tygodniu</span>
+                    <div class="text-900 font-medium text-xl">{{amountOfReportsThisWeek}}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                     [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-comment text-purple-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+        </div>
+    </div>
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <div class="flex align-items-center justify-content-between mb-0">
+                <h5><span class="block text-600 font-medium mb-0">Obligatoryjne reklamacje</span></h5>
+            </div>
+
+            <div *ngIf="complaintList && complaintList.length > 0; else noComplaints">
+                <p-table [value]="complaintList" dataKey="id">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Numer faktury</th>
+                            <th>Data zakupu</th>
+                            <th>Data odpowiedzi</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-complaint>
+                        <tr>
+                            <td style="min-width: 3rem;">{{ complaint.factureId }}</td>
+                            <td style="min-width: 3rem;">{{ complaint.dateOfPurchase }}</td>
+                            <td style="min-width: 3rem;"><span class="text-red-500">{{ complaint.dataOfReportAnswer }}</span></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <ng-template #noComplaints>
+                <div class="text-center p-4">
+                    <h5>Brak zgłoszeń wartych uwagi</h5>
+                    <p>Aktualnie brak zgłoszeń do wyświetlenia.
+                        <i class="pi true-icon pi-check text-green-500"></i></p>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+</div>
+

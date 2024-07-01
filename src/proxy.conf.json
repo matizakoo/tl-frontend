@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://tanielazienkicsms.eu-north-1.elasticbeanstalk.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

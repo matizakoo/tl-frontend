@@ -1,0 +1,87 @@
+<div class="card">
+
+    <div class="col-12">
+        <p-messages [value]="msgs"></p-messages>
+        <h3>Kategorie</h3>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="formgroup-inline">
+                <div class="field p-fluid">
+                    <label for="provider" class="p-sr-only">Category</label>
+                    <input pInputText id="provider" type="text" placeholder="Utwórz kategorie"
+                           formControlName="provider"/>
+                    <small *ngIf="myForm.get('provider').invalid && myForm.get('provider').touched" id="username-help"
+                           class="p-error" style="width: 5px; display: none;">Enter your username to reset your
+                        password.</small>
+                </div>
+                <button pButton label="Dodaj" type="submit"></button>
+            </div>
+        </form>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <p-confirmDialog></p-confirmDialog>
+            <p-table scrollDirection="both" [scrollable]="true" scrollHeight="450px"
+                     styleClass="mt-3 p-datatable-striped" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="min-width: 4rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Id
+                            </div>
+                        </th>
+                        <th style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Kategoria produktu
+                            </div>
+                        </th>
+                        <th style="min-width: 12rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Operacje
+                            </div>
+                        </th>
+
+                    </tr>
+                    <tr *ngFor="let category of categories">
+                        <th style="font-weight: normal;">
+                            {{category.id}}
+                        </th>
+                        <th style="font-weight: normal;">
+                            {{category.category}}
+                        </th>
+                        <th style="font-weight: normal;">
+                            <div class="flex">
+                                <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-success mr-2"
+                                        (click)="changingCategoryData(category)"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                                        (click)="confirmDeleteCategory(category.id)"></button>
+                            </div>
+
+                        </th>
+
+                    </tr>
+                </ng-template>
+
+
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="categoryDialog" [style]="{width: '450px'}" header="Zmień nazwę produktu {{categoryToRemoveName}}" [modal]="true" class="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="col-12">
+            <form [formGroup]="editForm" (ngSubmit)="changeNameOfCategory()">
+                <div class="formgroup-inline">
+                    <div class="field">
+                        <label for="categoryedit" class="p-sr-only">Category</label>
+                        <input pInputText id="categoryedit" type="text" placeholder="Zmień nazwę kategorii"
+                               formControlName="category"/>
+                    </div>
+                    <button pButton label="Zmień" type="submit" class="p-element p-button p-component" style="width: 120px; margin-top: 0px;"></button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+</p-dialog>
+
