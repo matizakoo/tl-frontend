@@ -3,11 +3,11 @@ import { MenuItem } from 'primeng/api';
 import { Product } from '../../api/product';
 import { ProductService } from '../../service/product.service';
 import { Subscription, debounceTime } from 'rxjs';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { DashboardService } from './dashboard.service';
 import { ProviderService } from '../provider/provider.service';
 import { ContractorService } from '../contractor/contractor.service';
 import { Complaint } from '../complaint/complaint';
+import {LayoutService} from "../../../layout/service/app.layout.service";
 
 @Component({
     templateUrl: './dashboard.component.html',

@@ -4,8 +4,6 @@ import {catchError, Observable, throwError} from "rxjs";
 import {InfoDTO} from "../../../info-dto";
 import {map} from "rxjs/operators";
 import {Complaint} from "./complaint";
-import {Category} from "../category/category";
-import {ComplaintComponent} from "./complaint.component";
 
 @Injectable({
   providedIn: 'root'

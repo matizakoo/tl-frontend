@@ -1,3 +1,3 @@
 export class InfoDTO {
-    info: string;
+    info: string | undefined;
 }

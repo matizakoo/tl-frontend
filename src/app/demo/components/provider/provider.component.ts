@@ -1,16 +1,6 @@
 import { Component } from '@angular/core';
-import {ButtonDirective} from "primeng/button";
-import {ConfirmDialogModule} from "primeng/confirmdialog";
-import {DialogModule} from "primeng/dialog";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {InputTextModule} from "primeng/inputtext";
-import {MessagesModule} from "primeng/messages";
-import {NgForOf, NgIf} from "@angular/common";
 import {ConfirmationService, Message, PrimeTemplate} from "primeng/api";
-import {Ripple} from "primeng/ripple";
-import {TableModule} from "primeng/table";
-import {Category} from "../category/category";
-import {CategoryService} from "../category/category.service";
 import {MessagesconfService} from "../../../messagesconf.service";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {InfoDTO} from "../../../info-dto";
@@ -31,7 +21,7 @@ export class ProviderComponent {
     providerToRemoveName: string;
     statusCode: number;
     categoryDialog: boolean = false;
-    temp:string;
+    temp: string;
 
     constructor(private fb: FormBuilder,
                 private providerService: ProviderService,

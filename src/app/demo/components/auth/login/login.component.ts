@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {LayoutService} from 'src/app/layout/service/app.layout.service';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {LoginService} from "../login.service";
 import {HttpResponse} from "@angular/common/http";
 import {take} from "rxjs";
+import {LayoutService} from "../../../../layout/service/app.layout.service";
 
 @Component({
     selector: 'app-login',
